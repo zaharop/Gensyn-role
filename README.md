@@ -26,5 +26,7 @@ It prompts for your EOA address and monitors updates for your associated peers.
 
 ```bash
 git clone https://github.com/zaharop/Gensyn-role.git
-cd gswarm-vps-installer
+cd Gensyn-role
+chmod +x install_gswarm.sh
+./install_gswarm.sh
 
