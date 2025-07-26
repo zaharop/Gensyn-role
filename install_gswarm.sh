@@ -11,6 +11,7 @@ sudo tar -C /usr/local -xzf go1.22.6.linux-amd64.tar.gz
 
 echo "🔧 Setting up Go PATH..."
 echo 'export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin' >> ~/.bashrc
+export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 source ~/.bashrc
 
 echo "✅ Go version:"
@@ -19,12 +20,26 @@ go version
 echo "🚀 Installing gswarm..."
 go install github.com/Deep-Commit/gswarm/cmd/gswarm@latest
 
-echo "✅ gswarm installed at: $HOME/go/bin/gswarm"
+echo "🔍 Checking if gswarm binary exists..."
+if [ -f "$HOME/go/bin/gswarm" ]; then
+    echo "✅ gswarm installed at: $HOME/go/bin/gswarm"
+else
+    echo "❌ gswarm binary not found. Installation may have failed."
+    exit 1
+fi
 
-echo "🔄 Reloading PATH..."
-export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
+echo "📌 Verifying gswarm is accessible from terminal..."
+if ! command -v gswarm &> /dev/null; then
+    echo "⚠️ gswarm command not found in PATH."
+    echo "👉 You can still run it using:"
+    echo "$HOME/go/bin/gswarm"
+    echo "💡 To fix this, ensure your PATH includes:"
+    echo 'export PATH=$PATH:$HOME/go/bin' >> ~/.bashrc
+    source ~/.bashrc
+else
+    gswarm --version
+    echo "✅ gswarm is ready to use!"
+fi
 
-echo "📌 Verifying gswarm installation..."
-gswarm --version || echo "❌ gswarm installation failed. Please check PATH or Go install."
+echo "✅ Installation complete."
 
-echo "✅ Done! You can now run gswarm from terminal."
