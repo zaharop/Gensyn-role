@@ -63,7 +63,8 @@ To receive notifications via Telegram, you need to set up a Telegram bot and con
 
 ### 1. Create a Telegram Bot:
 
-Chat with @BotFather on Telegram
+Chat with [**@BotFather**](https://t.me/BotFather)
+ on Telegram
 Send 
 ```bash
 /newbot
