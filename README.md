@@ -25,6 +25,6 @@ It prompts for your EOA address and monitors updates for your associated peers.
 ### 1. Clone this repo (or create a file manually)
 
 ```bash
-git clone https://github.com/yourusername/gswarm-vps-installer.git
+git clone https://github.com/zaharop/Gensyn-role.git
 cd gswarm-vps-installer
 
